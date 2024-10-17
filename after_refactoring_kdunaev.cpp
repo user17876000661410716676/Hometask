@@ -1,14 +1,10 @@
 ﻿#include <algorithm>
-#include <cmath>
 #include <iostream>
-#include <clocale>
 #include <random>
-#include <locale>
 
 void print_array(const char* const comment, int* arr, int arr_size);
 
 int main() {
-    // Инициализация массива
     const int arr_size = 20;
     int arr[arr_size];
     srand(time(nullptr));
@@ -16,7 +12,6 @@ int main() {
         arr[i] = rand() % 20;
     }
 
-    setlocale(LC_ALL, "");
     print_array("Массив до обработки: ", arr, arr_size);
 
     // Обработка массива
@@ -29,8 +24,9 @@ int main() {
 
 void print_array(const char* const comment, int* arr, int arr_size) {
     std::cout << comment;
+    static const char* space = " ";
     for (int i = 0; i < arr_size; i++) {
-        std::wcout << arr[i] << L" ";
+        std::cout << arr[i] << space;
     }
     std::cout << std::endl;
 }
