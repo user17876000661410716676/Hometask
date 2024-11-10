@@ -28,7 +28,7 @@ void print_array(const char* const comment,
     const int arr_size
 ) {
     std::cout << comment;
-    static const char* space = " ";
+    static const char space = ' ';
     for (int i = 0; i < arr_size; i++) {
         std::cout << arr[i] << space;
     }

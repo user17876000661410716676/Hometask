@@ -1,10 +1,10 @@
 @echo off
-chcp 1251 > log
+chcp 20866 > log
 del log
 
 set MAIN=after_refactoring_kdunaev.cpp
 set EXE=example.exe
-set CHARSET="-finput-charset=utf-8 -fexec-charset=windows-1251"
+set CHARSET="-finput-charset=windows-1251 -fexec-charset=koi8-r"
 
 if exist %EXE% del %EXE%
 
