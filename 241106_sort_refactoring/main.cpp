@@ -10,9 +10,9 @@ int main() {
 		arr[i] = rand() % size;
 	}
 
-	out::PrintArr(arr, size, "Generated array:");
+	out::PrintArr(arr, size, "Сгенерированный массив: ");
 
 	sort::InsertionSort(arr, size);
 
-	out::PrintArr(arr, size, "Sorted array:");
+	out::PrintArr(arr, size, "Отсортированный массив: ");
 }
