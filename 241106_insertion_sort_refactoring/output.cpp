@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-void out::PrintArr(int* arr, const int size, const char* const comment) {
+void dka::out::print_arr(int* arr, const int size, const char* const comment) {
 	static const char space = ' ';
 
 	std::cout << comment;
