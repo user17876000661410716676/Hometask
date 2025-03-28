@@ -1,5 +1,5 @@
 #ifndef MENU_FRAGMENTS_HPP
-#define MENU_FRAGMENTS
+#define MENU_FRAGMENTS_HPP
 
 #include "structs.hpp"
 

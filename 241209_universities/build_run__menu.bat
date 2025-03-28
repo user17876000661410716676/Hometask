@@ -1,10 +1,10 @@
 @echo off
-chcp 1251 > log
+chcp 65001 > log
 del log
 
-set CPP_FILES="menu_fragments.cpp functiones.cpp main.cpp"
+set CPP_FILES="functions.cpp menu_fragments.cpp main.cpp"
 set EXE=universities_list.exe
-set CHARSET="-finput-charset=utf-8 -fexec-charset=windows-1251"
+set CHARSET="-finput-charset=utf-8 -fexec-charset=utf-8"
 
 if exist %EXE% del %EXE%
 
