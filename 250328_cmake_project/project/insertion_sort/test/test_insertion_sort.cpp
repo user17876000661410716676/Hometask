@@ -4,7 +4,7 @@
 #include "sortings.hpp"
 
 TEST(ArraysEqual, InsertionSort) {
-	int current[] = {5, 2, 9, 1, 5, 6, 22, 31, 22, 3};
+	int current[] = { 5, 2, 9, 1, 5, 6, 22, 31, 22, 3 };
 	int current_size = sizeof(current) / sizeof(current[0]);
 	dka::sort::insertion_sort(current, current_size);
 

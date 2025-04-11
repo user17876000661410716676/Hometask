@@ -6,6 +6,6 @@ enable_testing()
 add_subdirectory(lib/googletest)
 
 add_subdirectory(universities_list)
-add_subdirectory(unit_tests)
+add_subdirectory(insertion_sort)
 
 set(CMAKE_SUPPRESS_REGENERATION True)
