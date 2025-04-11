@@ -4,7 +4,7 @@ int main() {
 	const int size = 5;
 	int arr[size]{ 3, 6, 5 , 9, 10 };
 
-	char space = ' ';
+	const char space = ' ';
 	std::cout << "Массив: ";
 	for (int i = 0; i < size; i++) {
 		std::cout << arr[i] << space;

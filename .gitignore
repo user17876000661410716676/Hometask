@@ -2,10 +2,13 @@
 # https://www.atlassian.com/ru/git/tutorials/saving-changes/gitignore#git-ignore-patterns
 #
 
-build_*/
+build*/
 lib/
 
+build.ninja
 *.exe
 *.ii
 *.s
 *.o
+*.lib
+

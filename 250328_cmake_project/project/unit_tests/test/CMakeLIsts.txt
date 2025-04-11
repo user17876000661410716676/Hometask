@@ -1,0 +1,12 @@
+set(SOURCES
+	test_insertion_sort.cpp
+)
+
+add_executable(test_insertion_sort ${SOURCES})
+target_link_libraries(test_insertion_sort
+	gtest_main
+	gmock_main
+	insertion_sort_lib
+)
+
+add_test(test_insertion_sort test_insertion_sort)

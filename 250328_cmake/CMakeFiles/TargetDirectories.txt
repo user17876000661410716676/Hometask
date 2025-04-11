@@ -1,3 +1,0 @@
-C:/IT/code/Hometask/250328_cmake/CMakeFiles/main.dir
-C:/IT/code/Hometask/250328_cmake/CMakeFiles/edit_cache.dir
-C:/IT/code/Hometask/250328_cmake/CMakeFiles/rebuild_cache.dir

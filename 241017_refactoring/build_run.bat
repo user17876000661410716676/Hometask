@@ -1,5 +1,5 @@
 @echo off
-chcp 20866 > log
+chcp 1251 > log
 del log
 
 set MAIN=after_refactoring_kdunaev.cpp
