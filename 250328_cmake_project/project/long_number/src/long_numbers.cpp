@@ -136,7 +136,8 @@ bool LongNumber::operator > (const LongNumber& x) const {
 	}
 	for (int i = length - 1; i >= 0; i--) {
 		if (numbers[i] != x.numbers[i]) {
-			return numbers[i] > x.numbers[i];
+			if (sign == 1) return numbers[i] > x.numbers[i];
+			else return numbers[i] < x.numbers[i];
 		}
 	}
 	return false;
@@ -151,7 +152,8 @@ bool LongNumber::operator < (const LongNumber& x) const {
 	}
 	for (int i = length - 1; i >= 0; i--) {
 		if (numbers[i] != x.numbers[i]) {
-			return numbers[i] < x.numbers[i];
+			if (sign == 1) return numbers[i] < x.numbers[i];
+			else return numbers[i] > x.numbers[i];
 		}
 	}
 	return false;
@@ -301,53 +303,91 @@ LongNumber LongNumber::operator * (const LongNumber& x) const {
 }
 
 LongNumber LongNumber::operator / (const LongNumber& x) const {
-	if (x.length == 0 || (x.length == 1 && x.numbers[0] == 0) || length < x.length) {
-		return LongNumber("0");
-	}
+	if (x.length == 0
+		||
+		(x.length == 1 && x.numbers[0] == 0)
+		||
+		length < x.length
+		||
+		(this->numbers[0] == 0 && this->length == 1)
+		) return LongNumber("0");
 
-	LongNumber result("0");
-	LongNumber one("1");
-
-	LongNumber dividend(*this);
-	LongNumber divisor(x);
+	LongNumber result("0"), one("1"), ten{ "10" },
+		temporary_dividend{ "0" },
+		dividend(*this), divisor(x);
 
 	dividend.sign = divisor.sign = 1;
+	int i = dividend.length - 1;
 
-	while (dividend > divisor || dividend == divisor) {
-		dividend = dividend - divisor;
-		result = result + one;
+	for (i; i >= 0; ) {
+		while (
+			temporary_dividend < divisor) {
+			result = result * ten;
+
+			int digit = dividend.numbers[i];
+			char str[2];
+			str[0] = '0' + digit;
+			str[1] = '\0';
+			const char* cstr = str;
+			LongNumber num(cstr);
+
+			temporary_dividend = temporary_dividend * ten + num;
+			i--;
+		}
+
+		while (temporary_dividend > divisor || temporary_dividend == divisor) {
+			temporary_dividend = temporary_dividend - divisor;
+			result = result + one;
+		}
 	}
 
 	result.sign = sign * x.sign;
-
-	if (result.length == 1 && result.numbers[0] == 0) result.sign = 1;
 
 	return result;
 }
 
 LongNumber LongNumber::operator % (const LongNumber& x) const {
-	if (x.length == 0 || (x.length == 1 && x.numbers[0] == 0) || length < x.length) {
-		return *this;
-	}
+	if (x.length == 0
+		||
+		(x.length == 1 && x.numbers[0] == 0)
+		||
+		length < x.length
+		||
+		(this->numbers[0] == 0 && this->length == 1)
+		) return LongNumber("0");
 
-	LongNumber result("0");
-	LongNumber one("1");
-
-	LongNumber dividend(*this);
-	LongNumber divisor(x);
+	LongNumber one("1"), ten{ "10" },
+		temporary_dividend{ "0" },
+		dividend(*this), divisor(x);
 
 	dividend.sign = divisor.sign = 1;
+	int i = dividend.length - 1;
 
-	while (dividend > divisor || dividend == divisor) {
-		dividend = dividend - divisor;
+	for (i; i >= 0; ) {
+		while (
+			temporary_dividend < divisor) {
+			int digit = dividend.numbers[i];
+			char str[2];
+			str[0] = '0' + digit;
+			str[1] = '\0';
+			const char* cstr = str;
+			LongNumber num(cstr);
+
+			temporary_dividend = temporary_dividend * ten + num;
+			i--;
+		}
+
+		while (temporary_dividend > divisor || temporary_dividend == divisor) {
+			temporary_dividend = temporary_dividend - divisor;
+		}
 	}
 
-	result = dividend;
-	result.sign = sign * x.sign;
+	temporary_dividend.sign = sign;
 
-	if (result.length == 1 && result.numbers[0] == 0) result.sign = 1;
+	if (sign == -1) temporary_dividend = temporary_dividend + divisor;
+	
 
-	return result;
+	return temporary_dividend;
 }
 
 int LongNumber::get_digits_number() const noexcept {
