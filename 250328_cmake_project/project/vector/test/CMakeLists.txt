@@ -2,10 +2,10 @@ set(SOURCES
 	test_vector.cpp
 )
 
-add_executable(vector_tests ${SOURCES})
-target_link_libraries(vector_tests 
+add_executable(test_vector ${SOURCES})
+target_link_libraries(test_vector 
 	gtest 
 	vector_lib
 )
 
-add_test(vector_tests vector_tests)
+add_test(test_vector test_vector)

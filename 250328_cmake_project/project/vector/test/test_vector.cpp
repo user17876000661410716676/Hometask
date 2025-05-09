@@ -4,10 +4,13 @@
 #include "vector.hpp"
 
 using biv::Vector;
+TEST(VectorTest, Initialization) {
+	Vector<int> vec;
+	EXPECT_EQ(0, vec.get_size());
+}
 
 TEST(VectorTest, GetSize_PushBack) {
 	Vector<int> vec;
-	EXPECT_EQ(0, vec.get_size());
 	for (int i = 0; i < 41; i++) {
 		vec.push_back(i);
 
