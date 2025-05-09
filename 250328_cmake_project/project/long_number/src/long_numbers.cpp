@@ -409,7 +409,7 @@ bool LongNumber::is_negative() const noexcept {
 
 int LongNumber::get_length(const char* const str) const noexcept {
 	int ln = 0;
-	while (str[ln] != 0) {
+	while (str[ln] != '\0') {
 		++ln;
 	}
 	return ln;
