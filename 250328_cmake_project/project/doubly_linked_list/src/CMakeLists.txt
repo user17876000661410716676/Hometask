@@ -1,7 +1,6 @@
 target_sources(doubly_linked_list_lib
 	PRIVATE
 		doubly_linked_list.cpp
-		templates_doubly_linked_list.cpp
 	PUBLIC
 		doubly_linked_list.hpp
 )

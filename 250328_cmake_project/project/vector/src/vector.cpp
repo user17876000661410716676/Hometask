@@ -97,6 +97,16 @@ bool Vector<T>::remove_first(const T& value) {
 				arr[i] = arr[i + 1];
 			}
 			size--;
+			
+			if (capacity - size >= 200) {
+				capacity = size + 100;
+				T* new_arr = new T[capacity];
+				for(std::size_t i = 0; i < size; i++){
+					new_arr[i] = arr[i];
+				}
+				delete[] arr;
+				arr = new_arr;
+			}
 			return 1;
 		}
 	}

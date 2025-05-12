@@ -1,5 +1,6 @@
 set(SOURCES
 	test_vector.cpp
+	templates_vector.cpp
 )
 
 add_executable(test_vector ${SOURCES})

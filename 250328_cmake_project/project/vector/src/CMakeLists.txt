@@ -1,7 +1,6 @@
 target_sources(vector_lib
 	PRIVATE
 		vector.cpp
-		templates_vector.cpp
 	PUBLIC
 		vector.hpp
 )

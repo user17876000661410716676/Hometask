@@ -312,7 +312,7 @@ LongNumber LongNumber::operator / (const LongNumber& x) const {
 		(this->numbers[0] == 0 && this->length == 1)
 		) return LongNumber("0");
 
-	LongNumber result("0"), one("1"), ten{ "10" },
+	LongNumber result("0"), zero("0"), one("1"), ten{ "10" },
 		temporary_dividend{ "0" },
 		dividend(*this), divisor(x);
 
@@ -339,6 +339,10 @@ LongNumber LongNumber::operator / (const LongNumber& x) const {
 			temporary_dividend = temporary_dividend - divisor;
 			result = result + one;
 		}
+	}
+
+	if (temporary_dividend != zero && this->sign == -1) {
+		result = result + one;
 	}
 
 	result.sign = sign * x.sign;

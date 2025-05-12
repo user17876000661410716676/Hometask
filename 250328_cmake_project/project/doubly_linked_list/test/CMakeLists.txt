@@ -1,5 +1,6 @@
 set(SOURCES
 	test_doubly_linked_list.cpp
+	templates_doubly_linked_list.cpp
 )
 
 add_executable(test_doubly_linked_list ${SOURCES})
